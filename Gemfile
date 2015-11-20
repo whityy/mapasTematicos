@@ -17,6 +17,10 @@ gem 'mongo'
 gem 'mongoid', '~> 4.0.1'
 gem 'bson_ext'
 
+#Bootstrap
+gem 'bootstrap-sass'       # should be already included
+gem 'bootswatch-rails'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -34,7 +38,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'bootstrap-sass'       # should be already included
+gem 'bootswatch-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
