@@ -17,6 +17,9 @@ gem 'mongo'
 gem 'mongoid', '~> 4.0.1'
 gem 'bson_ext'
 
+#Devise
+gem 'devise'
+
 #Bootstrap
 gem 'bootstrap-sass'       # should be already included
 gem 'bootswatch-rails'
