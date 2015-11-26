@@ -1,9 +1,9 @@
 <footer class="navbar navbar-fixed-bottom navbar-inverse">
 <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Contacto",   'contact' %></li>
-        <li><%= link_to "Acerca de",   'about' %></li>
-        <li><%= link_to "Ayuda",   'help' %></li>
+      <ul class="nav navbar-nav navbar-left">
+        <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contacto",   contact_path %></li>
+        <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "Acerca de",   about_path %></li>
+        <li class="<%= 'active' if current_page?(help_path) %>"><%= link_to "Ayuda",   help_path %></li>
       </ul>
     </nav>
 </footer>

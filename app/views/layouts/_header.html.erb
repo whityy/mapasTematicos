@@ -4,8 +4,8 @@
     </div> 
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Inicio",   '/' %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Inicio",   root_path %></li>
+        <li class="<%= 'active' if current_page?(new_user_session_path) %>"><%= link_to "Accede", new_user_session_path %></li>
       </ul>
     </nav>
 </header>
