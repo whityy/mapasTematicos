@@ -1,15 +1,24 @@
 
+/* Body */
+body{
+	padding-top: 60px;
+	background-image: url('/assets/fondomod.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+
 
 /* navbar header */
- 
-/* title */
-
+/* Color brand */
 .navbar-default .navbar-brand { 
 	color: #FFF;
 }
 
 
-
+/* Margen izquierda */
 .navbar-right{
 	margin-right: 30px !important;
 }
