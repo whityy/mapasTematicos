@@ -47,6 +47,7 @@ group :development, :test do
 
   #Test
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :test do
