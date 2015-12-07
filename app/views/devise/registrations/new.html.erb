@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-primary">
     <div class="panel-heading">
       <h3 align="center" class="panel-title">Registrate</h3>
     </div>
@@ -12,20 +12,20 @@
       </div>
 
       <div class="field">
-        <%= f.label :contraseña %>
+        <%= f.label :contraseña, style: "margin-top: 15px;" %>
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(La contraseña debe tener un mínimo de <%= @minimum_password_length %> caracteres)</em>
           <% end %><br />
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :repetir_contraseña %><br />
+        <%= f.label :repetir_contraseña, style: "margin-top: 15px;"%><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Registrate", :class => "btn btn-primary btn-lg", style: "margin-bottom: 15px;"%>
+        <%= f.submit "Registrate", :class => "btn btn-success btn-lg", style: "margin-bottom: 15px; margin-top: 20px;"%>
       </div>
       <% end %>
 
