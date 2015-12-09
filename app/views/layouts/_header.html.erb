@@ -8,24 +8,26 @@
     </button>
     <a class="navbar-brand" href="/">Mapas Temáticos </a>
    </div> 
-  
+
     <div class="collapse navbar-collapse" id="header-collapse">
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
-      	<li style="color: white; padding-top: 25px;">Hola, <%= current_user.email %> </li>
+      	<li style="color: white; padding-top: 20px; margin-right: 20px;">Hola, <%= current_user.email %> </li>
       		<li>
       			<div class="btn-group">
-      				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cuenta <span class="caret"></span>
+      				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 7px;"> Cuenta <span class="caret"></span>
       				</button>
       				
       				<ul class="dropdown-menu">
-      					<li><%= link_to "Mapas", maps_path %></li>
-
-      					<li class="<%= 'active' if current_page?(edit_user_registration_path) %>"><%= link_to "Datos personales", edit_user_registration_path %></li>
+      					<li><%= link_to "Mis mapas", maps_path %></li>
 
       					<li role="separator" class="divider"></li>
 
-      					<li class="<%= 'active' if current_page?(destroy_user_session_path) %>"><%= link_to "Cerrar sesión", destroy_user_session_path %></li>
+      					<li><%= link_to "Datos personales", edit_user_registration_path %></li>
+
+      					<li role="separator" class="divider"></li>
+
+      					<li><%= link_to "Cerrar sesión", destroy_user_session_path %></li>
       				</ul>
       			</div>
       		</li>
