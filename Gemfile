@@ -20,9 +20,10 @@ gem 'bson_ext'
 #Devise
 gem 'devise'
 
-#Bootstrap
+#Bootstrap and icons
 gem 'bootstrap-sass'       # should be already included
 gem 'bootswatch-rails'
+gem 'font-awesome-sass'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -49,6 +50,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'capybara'
+
 end
 
 group :test do
