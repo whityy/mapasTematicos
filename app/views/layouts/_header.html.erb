@@ -12,10 +12,18 @@
     <div class="collapse navbar-collapse" id="header-collapse">
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
-      	<li style="color: white; padding-top: 20px; margin-right: 20px;">Hola, <%= current_user.email %> </li>
+      	<li style="color: white; padding-top: 20px; margin-right: 20px;">Hola, </li>
       		<li>
       			<div class="btn-group">
-      				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 7px;"> Cuenta <span class="caret"></span>
+      				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 7px;">
+                <%= if !current_user.name then 
+                  current_user.email 
+                elsif current_user.username then 
+                  current_user.name + " " + current_user.username
+                else
+                  current_user.name
+                end %> 
+                <span class="caret"></span>
       				</button>
       				
       				<ul class="dropdown-menu">

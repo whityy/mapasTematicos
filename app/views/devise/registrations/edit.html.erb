@@ -8,12 +8,12 @@
 
         <div class="field">
           <%= f.label "nombre" %><br />
-          <%= f.email_field :name, autofocus: true %>
+          <%= f.text_field :name, autofocus: true %>
         </div>
 
         <div class="field">
           <%= f.label "nombre_de_usuario", style: "margin-top: 15px;"%><br />
-          <%= f.email_field :username, autofocus: true %>
+          <%= f.text_field :username, autofocus: true %>
         </div>
 
         <div class="field">
@@ -52,7 +52,7 @@
       <h3 align="center" class="panel-title">Borrar cuenta</h3>
     </div>
     <div class="panel-body">
-      <p>¿Quieres borrar tu cuenta? <%= button_to "Borrar cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro" }, method: :delete,  :class => "btn btn-danger"%></p>
+      <p>¿Quieres borrar tu cuenta? <%= button_to "Borrar cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete,  :class => "btn btn-danger"%></p>
     </div>
 </div>
 
