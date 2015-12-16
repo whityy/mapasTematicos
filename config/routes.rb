@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/maps'
   
-  root                  'static_pages#home'
+  root to:                 'static_pages#home'
+
 
   get 'help'    =>      'static_pages#help'
 
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   get 'contact' =>      'static_pages#contact'
 
   get 'maps'    =>      'static_pages#maps'
+
+
+  #get '/welcome' => 'static_pages#maps'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
