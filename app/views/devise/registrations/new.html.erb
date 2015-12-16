@@ -1,29 +1,35 @@
-<h2>Sign up</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 align="center" class="panel-title">Registrate</h3>
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="field">
+        <%= f.label :contraseña, style: "margin-top: 15px;" %>
+        <% if @minimum_password_length %>
+          <em>(La contraseña debe tener un mínimo de <%= @minimum_password_length %> caracteres)</em>
+          <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="field">
+        <%= f.label :repetir_contraseña, style: "margin-top: 15px;"%><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+      <div class="actions">
+        <%= f.submit "Registrate", :class => "btn btn-success btn-lg", style: "margin-bottom: 15px; margin-top: 20px;"%>
+      </div>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <%= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+    </div>
+</div>
