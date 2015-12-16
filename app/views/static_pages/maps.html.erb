@@ -4,6 +4,7 @@
 	var map;
 	var direccion = "";
 	
+	/* Iniciar mapa */
 	function initMap() {
 		var mapOptions = {
  			center: new google.maps.LatLng(25.80, -80.30),
@@ -13,7 +14,30 @@
 		map = new google.maps.Map(document.getElementById("map"), mapOptions);	
 	}
 
+	/* Localizar país */
+	function centerMap(direccion){
+		if (direccion != ""){
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode( {'address' : direccion}, function(results, status) {
+		    	if (status == google.maps.GeocoderStatus.OK) {
+		        	map.setCenter(results[0].geometry.location);
+		        	map.setZoom(6);
+			    }
+			});
+		}
+		else{
+			alert("¡Tienes que indicar un país!");
+		}
+	}
+
 </script>
 
 <body onload="initMap()">
 	<div id="map"></div>
+
+	<div class="input-group">
+ 		<input type="text" class="form-control" placeholder="País" aria-describedby="basic-addon1" id="pais">
+		<button class="btn btn-danger" onclick="centerMap(document.getElementById('pais').value)">Ir!!</button>
+	</div>
+
+</body>
