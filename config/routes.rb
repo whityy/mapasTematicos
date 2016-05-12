@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/maps'
   
-  root to:                 'static_pages#home'
+  root to:                 'static_pages#maps'
 
 
   get 'help'    =>      'static_pages#help'
