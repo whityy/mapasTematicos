@@ -16,4 +16,10 @@ class StaticPagesController < ApplicationController
   def maps
   end
 
+  def configuracionMapa
+  end
+
+  def configuracionEstadistica
+  end
+
 end

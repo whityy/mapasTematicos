@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  get 'static_pages/configuracionMapa'
+
+  get 'static_pages/configuracionEstadistica'
+
   devise_for :users
 
   get 'static_pages/maps'
