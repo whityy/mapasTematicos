@@ -1,7 +1,11 @@
+
 <div class="jumbotron">
   <h1 align="center", style="margin-bottom: 40px; margin-top: 10px;">Mapas Temáticos</h1>
   <p align="center", style="margin-bottom: 40px;">Es una aplicación sencilla para generar mapas estadísticos utilizando los datos que puedas subir.</p>
-  <p><a class="btn1 btn-primary btn-lg center-block", style="margin-top: 25px" data-toggle="modal" data-target="#myModal1">Comenzar</a></p>
+  
+  <div class="span4 offset4 text-center">
+  	<button class="btn1 btn-primary btn-lg", style="margin-top: 25px" onclick="myFunctionJS()" id="btnMyModal">Comenzar</button>
+  </div>
 
   <!-- Ventana modal 1 Configuración mapa -->
   <div id="myModal1" class="modal">
@@ -9,13 +13,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Configuración del mapa</h4>
+        <h4 class="modal-title">Paso 1/3: Configuración del mapa</h4>
       </div>
       <div class="modal-body">
         <p>Poner todo lo configurable de los mapas (Localización, tipo de mapa...)</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseModal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-toggle= "modal" data-target="#myModal2">Siguiente</button>
       </div>
     </div>
@@ -28,13 +32,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Configuración estadísticas</h4>
+        <h4 class="modal-title">Paso 2/3: Configuración de estadísticas</h4>
       </div>
       <div class="modal-body">
-        <p>Poner todo lo configurable de estadisticas con google charts</p>
+        <p>Poner todo lo configurable de los mapas (Localización, tipo de mapa...)</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Atrás</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseModal">Atrás</button>
+        <button type="button" class="btn btn-primary" data-toggle= "modal" data-target="#myModal3">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ventana modal 3 Subida de archivos -->
+<div id="myModal3" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Paso 3/3: Subida de archivos</h4>
+      </div>
+      <div class="modal-body">
+        <p>Poner todo lo configurable de los mapas (Localización, tipo de mapa...)</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseModal">Atrás</button>
         <button type="button" class="btn btn-primary" data-toggle= "modal" data-target="#myModal2">Guardar</button>
       </div>
     </div>
@@ -43,7 +66,6 @@
 
 
 </div>
-
 
 
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb6BksSvuIGMLgJiP3PDT68LFEu6VVuwA" async defer></script>
