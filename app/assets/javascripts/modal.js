@@ -11,9 +11,7 @@ function myFunctionJS(){
 	var btnClose = document.getElementById("btnCloseModal");
 
 	// When the user clicks on the button, open the modal 
-	btn.onclick = function() {
-	    modal.style.display = "block";
-	}
+	modal.style.display = "block";
 
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
@@ -21,10 +19,12 @@ function myFunctionJS(){
 	}
 
 	btnClose.onclick = function(){
-		displayModal(modal, "none");
+		modal.style.display = "none";
 	}
 }
 
-function displayModal(wndModal, strDisplay){
-	wndModal.style.display = strDisplay;
+function changeModalWindow(idModalWindowParent, idModalWindow){
+	document.getElementById(idModalWindowParent).style.display = "none";
+	document.getElementById(idModalWindow).style.display = "block";
 }
+
