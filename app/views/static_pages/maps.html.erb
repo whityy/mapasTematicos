@@ -17,13 +17,20 @@
       </div>
       <div class="modal-body">
         
-        <h3>Tipo de mapa</h3>
-      		<form style="padding-left:30px;" action="">
+        <h4 class=>Tipo de mapa</h4>
+      		<form style="padding-left:30px; margin-bottom: 10px;" action="">
 			  <input type="radio" name="gender" value="male"> Satélite<br>
 			  <input type="radio" name="gender" value="female"> Híbrido<br>
 			  <input type="radio" name="gender" value="other"> Físico
 			</form>
+
+		<h4 class=>Búsqueda de localización</h4>
+		<div class="input-group">
+ 			<input type="text" class="form-control" placeholder="Introduzca país o ciudad" aria-describedby="basic-addon1" id="pais">
+		</div>
+
       </div>
+ 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseModal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-toggle= "modal" onclick="changeModalWindow('myModal1','myModal2')" data-target="#myModal2">Siguiente</button>
@@ -38,10 +45,35 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" id="btnCloseModal2" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Paso 2/3: Configuración de estadísticas</h4>
+        <h4 class="modal-title">Paso 2/3: Configuración de los gráficos</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+
+        <h4 class=>Título del gráfico</h4>
+        <div class="input-group">
+ 			<input type="text" class="form-control" placeholder="Introduzca el título del gráfico" aria-describedby="basic-addon1">
+		</div>
+
+		<h3 class=>Nombre de las etiquetas</h4>
+        <div class="input-group">
+ 			<input type= "text" class="form-control" placeholder="Introduzca el nombre de las etiquetas" aria-describedby="basic-addon1">
+ 		</div>
+ 		
+ 		<h4 class=>8ipo de gŕafico</h4>
+        <select class="form-control">
+        	<option value="0">Elija una opción</option>
+  			<option value="1">Gráfico de columnas</option>
+  			<option value="2">Gáfico de barras</option>
+  			<option value="3">Gráfico circular</option>
+  			<option value="4">Gráfico de anillos</option>
+  			<option value="5">Gráfico de burbujas</option>
+  			<option value="6">Gráfico de cajas</option>
+  			<option value="7">Gráfico compuesto</option>
+  			<option value="8">Histograma</option>
+		</select>
+
+		<h4 class=>Colores del gŕafico</h4>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" onclick="changeModalWindow('myModal2','myModal1')" data-dismiss="modal" id="btnAtrasModal2">Atrás</button>
@@ -60,7 +92,7 @@
         <h4 class="modal-title">Paso 3/3: Importar archivos</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+        <h4 class=>Seleccionar archivo</h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changeModalWindow('myModal3','myModal2')" id="btnAtrasModal3">Atrás</button>
