@@ -12,7 +12,7 @@ body{
 }
 
 /* Cabecera. Color brand */
-.navbar-default .navbar-brand { 
+.navbar-default .navbar-brand {
 	color: #FFF;
 }
 
@@ -35,10 +35,10 @@ body{
 /* Mapa */
 #map {
 	display: block;
-	height: 500px;
-	width: 70%;
-	margin-left: 50px;
+	height: 600px;
+	width: 100%;
 	margin-bottom: 50px;
+	// margin-left: 50px;
 }
 
 .input-group{
@@ -71,4 +71,3 @@ body{
 .form-control{
 	margin-bottom: 20px;
 }
-

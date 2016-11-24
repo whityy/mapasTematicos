@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-  
 
-  get 'static_pages/configuracionMapa'
+  #get 'static_pages/configuracionMapa'
 
-  get 'static_pages/configuracionEstadistica'
+  #get 'static_pages/configuracionEstadistica'
 
   devise_for :users
 
+  resources :static_pages do
+    collection do
+      post :import
+    end
+  end
+
   get 'static_pages/maps'
-  
-  root to:                 'static_pages#maps'
+  post 'static_pages/maps'
+
+  root to: 'static_pages#maps'
 
 
   get 'help'    =>      'static_pages#help'

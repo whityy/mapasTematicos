@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,8 +31,10 @@ gem 'angularjs-rails'
 #GoogleCharts
 gem 'googlecharts'
 
-#Carrierwave
-gem 'carrierwave'
+#Roo
+gem 'roo'
+gem 'roo-xls'
+# gem 'iconv'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -54,7 +56,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'better_errors'
+  gem 'jazz_hands2'
+  gem 'awesome_print', github: 'eoinkelly/awesome_print'
   #Rspec
   gem 'rspec-rails'
   gem 'factory_girl'
@@ -70,4 +74,3 @@ group :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

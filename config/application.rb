@@ -1,6 +1,11 @@
 require File.expand_path('../boot', __FILE__)
-
+# aditional libraries
 require "rails"
+require "roo-xls"
+require "roo"
+#require "csv"
+#require "iconv"
+
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
