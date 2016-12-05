@@ -1,19 +1,17 @@
 <footer class="navbar navbar-fixed-bottom navbar-default">
 	<button type="button" class= "navbar-toggle collapsed" data-target="#footer-collapse" data-toggle="collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-    </button>
-
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	</button>
 	<nav>
-	<div class="collapse navbar-collapse" id="footer-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contacto",   contact_path %></li>
-        <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "Acerca de",   about_path %></li>
-        <li class="<%= 'active' if current_page?(help_path) %>"><%= link_to "Ayuda",   help_path %></li>
-      </ul>
-    </div>
-    </nav>
+		<div class="collapse navbar-collapse" id="footer-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contacto",   contact_path %></li>
+				<li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "Acerca de",   about_path %></li>
+				<li class="<%= 'active' if current_page?(help_path) %>"><%= link_to "Ayuda",   help_path %></li>
+			</ul>
+		</div>
+	</nav>
 </footer>
- 

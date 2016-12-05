@@ -47,6 +47,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.5.1)
       execjs
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -70,6 +71,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cloudinary (1.2.4)
+      aws_cf_signer
+      rest-client
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -89,6 +93,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     diffy (3.1.0)
+    domain_name (0.5.20161129)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -105,6 +111,8 @@ GEM
       diff-lcs (>= 1.1.2)
       mime-types (>= 1.15)
     hirb (0.7.3)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     jazz_hands2 (1.0.2)
       hirb (~> 0.7, >= 0.7.3)
@@ -146,11 +154,16 @@ GEM
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
     multi_json (1.12.1)
+    netrc (0.11.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     optionable (0.2.0)
     origin (2.2.2)
     orm_adapter (0.5.0)
+    pdf-core (0.6.1)
+    prawn (2.1.0)
+      pdf-core (~> 0.6.1)
+      ttfunk (~> 1.4.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -205,6 +218,10 @@ GEM
       json (~> 1.4)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rest-client (2.0.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     roo (2.5.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -256,13 +273,14 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
+    ttfunk (1.4.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -286,6 +304,7 @@ DEPENDENCIES
   bson_ext
   byebug
   capybara
+  cloudinary
   coffee-rails (~> 4.1.0)
   devise
   factory_girl
@@ -297,6 +316,7 @@ DEPENDENCIES
   jquery-rails
   mongo
   mongoid (~> 4.0.1)
+  prawn
   rails (= 4.2.4)
   roo
   roo-xls
@@ -304,9 +324,8 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
-  turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.1
+   1.13.6

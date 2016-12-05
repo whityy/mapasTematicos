@@ -1,0 +1,215 @@
+<script type="text/javascript">
+	google.charts.load("current", {packages:['corechart']});
+</script>
+<!-- Contenido -->
+<div class="jumbotron margin-top-0">
+	<% if @data %>
+		<hr>
+		<div id="map"></div>
+		<hr>
+		<div class="display-inline">
+			<%= form_tag({controller: 'maps', action: 'save'}, method: 'post') do %>
+				<%= hidden_field_tag 'tipo', @tipo %>
+				<%= hidden_field_tag 'localizacion', @localizacion %>
+				<%= hidden_field_tag 'titulo', @titulo %>
+				<%= hidden_field_tag 'grafico', @grafico %>
+				<%= hidden_field_tag 'data', @data.to_json %>
+				<%= submit_tag "Guardar", class: 'btn btn-primary', style: "margin-right: 4px", data: { confirm: '¿Está seguro de guardar los datos del mapa?' } %>
+			<% end %>
+			<%= form_tag({controller: 'maps', action: 'report'}, method: 'post') do %>
+				<div id="hidden-chart-fields"></div>
+				<%= hidden_field_tag 'localizacion', @localizacion %>
+				<%= submit_tag "Descargar", class: 'btn btn-primary' %>
+			<% end %>
+			<div class="span4 offset4 text-center">
+		  	<%= link_to "Crear", {controller: 'maps', action: 'index'}, style: "margin-left: 5px", id: "btnMyModal", class: "btn btn-primary"%>
+		  </div>
+		</div>
+		<div id="charts64" class="hide"></div>
+		<div id="chartsHD" class="hide"></div>
+		<div id="chartsForMarkers" class="hide"></div>
+		<script>
+			function initMap() {
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 6,
+					<% case @tipo %>
+					<% when 'satellite' %>
+					mapTypeId: google.maps.MapTypeId.SATELLITE,
+					<% when 'hybrid' %>
+					mapTypeId: google.maps.MapTypeId.HYBRID,
+					<% when 'terrain' %>
+					mapTypeId: google.maps.MapTypeId.TERRAIN,
+					<% end %>
+				});
+				$("#hidden-chart-fields").append('<input type="hidden" name="tipomapa" value="'+ "<%= @tipo %>" +'">');
+				var pais = "<%= @localizacion %>";
+				$("#hidden-chart-fields").append('<input type="hidden" name="pais" value="'+ pais +'">');
+				var geocoder = new google.maps.Geocoder();
+				geocoder.geocode({'address': pais}, function(results, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						map.setCenter(results[0].geometry.location);
+					}
+				});
+
+				// Agregar Markers & Charts
+				<% columna = [] %>
+				var datosChart = [];
+				<% @data.each_with_index do |row, index| %>
+					<% if index == 0 %>
+						<% (row.size - 1).times do |col| %>
+							<% columna.push(row[col+1]) %>
+						<% end %>
+					<% else %>
+					setTimeout(function(){
+						// agregar Marker
+						var ciudad = "<%= row[0] %>"+ " " + pais;
+						var id = <%= index %>;
+						// generar valores del chart
+						datosChart[<%= index %>] = [
+						//eje coordenadas xy
+						['-', '-',],
+							<% (row.size - 1).times do |col| %>
+								<% if row[col+1] %>
+									<% unless row[col+1] == 0 %>
+										["<%= columna[col] %>",  <%= row[col+1] %>],
+									<% end %>
+								<% end %>
+							<% end %>
+						];
+						//dibujar charts para markers
+						google.charts.setOnLoadCallback(drawChartMarker(map, ciudad, datosChart[<%= index %>], "<%= @titulo %>", id));
+						//dibujar chart maker
+						google.charts.setOnLoadCallback(drawChart(map, ciudad, datosChart[<%= index %>], "<%= @titulo %>", id));
+						//dibujar charts HD
+						google.charts.setOnLoadCallback(drawChartHD(map, ciudad, datosChart[<%= index %>], "<%= @titulo %>", id));
+						}, <%= index %> + '000')
+					<% end %>
+				<% end %>
+			}
+
+			window.onload = initMap;
+		</script>
+
+		<script type="text/javascript">
+			function drawChart(map, ciudad, dataChart, titulo, id) {
+				var data = google.visualization.arrayToDataTable(dataChart);
+				var options = {
+					//title: titulo,
+					bar: {groupWidth: '95%'},
+					legend: 'none',
+					backgroundColor: { fill:'transparent' },
+					width: 70,
+					height: 55
+				};
+				var chart_div = document.getElementById('charts64');
+
+				<% case @grafico %>
+				<% when 'columnchart' %>
+				var chart = new google.visualization.ColumnChart(chart_div);
+				<% when 'barchart' %>
+				var chart = new google.visualization.BarChart(chart_div);
+				<% when 'piechart' %>
+				var chart = new google.visualization.PieChart(chart_div);
+				<% when 'linechart' %>
+				var chart = new google.visualization.LineChart(chart_div);
+				<% end %>
+
+				google.visualization.events.addListener(chart, 'ready', function () {
+				//Crear Markers
+					var geocoder = new google.maps.Geocoder();
+					geocoder.geocode({'address': ciudad}, function(results, status) {
+						if (status === google.maps.GeocoderStatus.OK) {
+							var marker = new google.maps.Marker({
+								map: map,
+								position: results[0].geometry.location,
+								icon: chart.getImageURI()
+							});
+
+							var chartG = $("#marker" + id).html();
+
+							var infowindow = new google.maps.InfoWindow({
+								content: chartG
+							});
+
+							marker.addListener('click', function() {
+								infowindow.open(marker.get('map'), marker);
+							});
+
+							//Data chart base64
+							$("#hidden-chart-fields").append('<input type="hidden" name="charts64[]" value="'+ chart.getImageURI() +'">');
+							$("#hidden-chart-fields").append('<input type="hidden" name="ciudades[]" value="'+ ciudad +'">');
+						}
+					});
+				});
+				//Dibujar Chart
+				chart.draw(data, options);
+			}
+
+			function drawChartHD(map, ciudad, dataChart, titulo, id) {
+				var data = google.visualization.arrayToDataTable(dataChart);
+				var options = {
+					title: titulo + ": " + ciudad,
+					bar: {groupWidth: '95%'},
+					//legend: 'none',
+					backgroundColor: { fill:'transparent' },
+					width: 700,
+					height: 550
+				};
+				var chart_div = document.getElementById('chartsHD');
+
+				<% case @grafico %>
+				<% when 'columnchart' %>
+				var chart = new google.visualization.ColumnChart(chart_div);
+				<% when 'barchart' %>
+				var chart = new google.visualization.BarChart(chart_div);
+				<% when 'piechart' %>
+				var chart = new google.visualization.PieChart(chart_div);
+				<% when 'linechart' %>
+				var chart = new google.visualization.LineChart(chart_div);
+				<% end %>
+
+				google.visualization.events.addListener(chart, 'ready', function () {
+				//Crear Markers
+					var geocoder = new google.maps.Geocoder();
+					geocoder.geocode({'address': ciudad}, function(results, status) {
+						if (status === google.maps.GeocoderStatus.OK) {
+							$("#hidden-chart-fields").append('<input type="hidden" name="chartsHD[]" value="'+ chart.getImageURI() +'">');
+						}
+					});
+				});
+				//Dibujar Chart
+				chart.draw(data, options);
+			}
+
+			function drawChartMarker(map, ciudad, dataChart, titulo, id) {
+				var data = google.visualization.arrayToDataTable(dataChart);
+				var options = {
+					title: titulo + ": " + ciudad,
+					bar: {groupWidth: '95%'},
+					//legend: 'none',
+					backgroundColor: { fill:'transparent' },
+					width: 250,
+					height: 160
+				};
+
+				$("#chartsForMarkers").append('<div id="marker'+ id +'" style="width: 250px; height: 160px;"></div>');
+				var chart_div = document.getElementById('marker' + id)
+
+				<% case @grafico %>
+				<% when 'columnchart' %>
+				var chart = new google.visualization.ColumnChart(chart_div);
+				<% when 'barchart' %>
+				var chart = new google.visualization.BarChart(chart_div);
+				<% when 'piechart' %>
+				var chart = new google.visualization.PieChart(chart_div);
+				<% when 'linechart' %>
+				var chart = new google.visualization.LineChart(chart_div);
+				<% end %>
+
+				//Dibujar Chart
+				chart.draw(data, options);
+			}
+		</script>
+	<% end %>
+</div>
+

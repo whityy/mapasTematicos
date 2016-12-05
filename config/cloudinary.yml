@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dotcomlabs
+  api_key: '222648693315567'
+  api_secret: 0eEKp1389_yHs_v_2hBcS_QmzjI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dotcomlabs
+  api_key: '222648693315567'
+  api_secret: 0eEKp1389_yHs_v_2hBcS_QmzjI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dotcomlabs
+  api_key: '222648693315567'
+  api_secret: 0eEKp1389_yHs_v_2hBcS_QmzjI
+  enhance_image_tag: true
+  static_image_support: false

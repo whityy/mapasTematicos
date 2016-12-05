@@ -1,0 +1,116 @@
+<!-- Contenido -->
+<div class="jumbotron">
+	<h1 align="center" class="title-maps">Mapas Temáticos</h1>
+	<p align="center" class="">
+		Es una aplicación sencilla para generar mapas estadísticos utilizando los datos que puedas subir.
+	</p>
+
+	<div class="span4 offset4 text-center">
+  	<button class="btn1 btn-primary btn-lg margin-top-25" onclick="myFunctionJS()" id="btnMyModal">Comenzar</button>
+  </div>
+
+<%= form_tag({controller: 'maps', action: 'show'}, method: 'post', multipart: 'true') do %>
+	<!-- Ventana modal 1 Configuración mapa -->
+	<div id="myModal1" class="modal" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+					<h4 class="modal-title">Paso 1/3: Configuración del mapa</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class=>Tipo de mapa</h4>
+					<div class="help-container">
+
+						<button type="button" class="help" data-toggle="popover" data-placement="left"  data-html="true" title="Popover title" data-content='<a href="www.google.com">demo</a>'>
+							<i class="fa fa-question" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="list-maps">
+						<input type="radio" name="tipo" value="satellite"> Satélite <br>
+						<input type="radio" name="tipo" value="hybrid"> Híbrido <br>
+						<input type="radio" name="tipo" value="terrain"> Terreno
+					</div>
+					<h4 class=>Búsqueda de localización</h4>
+					<div class="input-group">
+						<input type="text" name="localizacion" class="form-control" placeholder="Introduzca país o ciudad" aria-describedby="basic-addon1" id="pais">
+						<span class="input-group-addon">
+							<i class="fa fa-flag" aria-hidden="true"></i>
+						</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-default" data-dismiss="modal" id="btnCloseModal">Cerrar</a>
+					<a href="#" class="btn btn-primary" data-toggle= "modal" onclick="changeModalWindow('myModal1','myModal2')" data-target="#myModal2">Siguiente</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Ventana modal 2 Configuración estadísticas -->
+	<div id="myModal2" class="modal" style="display:none" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal" id="btnCloseModal2" aria-hidden="true">&times;</a>
+					<h4 class="modal-title">Paso 2/3: Configuración de los gráficos</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class=>Título del gráfico</h4>
+					<div class="input-group">
+						<input name="titulo" type="text" class="form-control" placeholder="Introduzca el título del gráfico" aria-describedby="basic-addon1">
+						<span class="input-group-addon">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</span>
+					</div>
+					<h4 class=>Tipo de gŕafico</h4>
+					<div class="help-container">
+						<button type="button" class="help" data-toggle="popover" data-placement="left" title="Tipo de Gráfico" data-content=   "Gráfico de columnas: Similar al gráfico de barras.
+						   Gráfico de barras: En este gráfico se comparan las alturas de las barras.
+						Gráfico circular: También llamado gráfico de queso o torta, es un círculo segmentado en partes. <br/>
+						Gráfico de líneas:Muestra un conjunto de puntos unidos por una línea">
+							<i class="fa fa-question" aria-hidden="true"></i>
+						</button>
+					</div>
+					<div class="input-group">
+						<select class="form-control" name="grafico">
+							<option disabled selected>Elija una opción</option>
+							<option value="columnchart">Gráfico de columnas</option>
+							<option value="barchart">Gáfico de barras</option>
+							<option value="piechart">Gráfico circular</option>
+							<option value="linechart">Gráfico de lineas</option>
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-default" onclick="changeModalWindow('myModal2','myModal1')" data-dismiss="modal" id="btnAtrasModal2">Atrás</a>
+					<a href="#" class="btn btn-primary" data-toggle= "modal" id="btnSiguienteModal2" onclick="changeModalWindow('myModal2','myModal3')" data-target="#myModal3">Siguiente</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Ventana modal 3 Subida de archivos -->
+	<div id="myModal3" class="modal" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" id="btnCloseModal3" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Paso 3/3: Importar archivos</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class=>Seleccionar archivo</h4>
+					<div class="margin-top-20">
+						<%= file_field_tag :file, accept: '.csv, .xls, .xlsx', required: true %>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn btn-default" data-dismiss="modal" onclick="changeModalWindow('myModal3','myModal2')" id="btnAtrasModal3">Atrás</a>
+					<%= submit_tag "Importar", class: 'btn btn-primary' %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+</div>

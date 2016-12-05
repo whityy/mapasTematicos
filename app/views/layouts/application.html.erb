@@ -2,10 +2,13 @@
 <html>
 <head>
   <title>Mapas Temáticos</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-<%= render 'layouts/shim' %>
+	<!-- Librerias Maps y Charts -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv8h4CEkrFfKWwA_shsXs7uH3zAdLGQRo" async defer></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<%= render 'layouts/shim' %>
 </head>
 <body>
   <%= render 'layouts/header' %>

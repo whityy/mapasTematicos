@@ -1,7 +1,47 @@
+@media (max-width: 540px) {
+	.jumbotron {
+		margin-right: 20px !important;
+		margin-left: 20px !important;
+	}
+}
+
+.display-inline {
+	display: inline-flex;
+}
+
+.list-maps {
+	padding-left:30px;
+	margin-bottom: 10px;
+}
+
+.title-maps {
+	margin-bottom: 40px;
+	margin-top: 10px;
+}
+
+.margin-top-0 {
+	padding-top: 0;
+}
+
+.margin-top-40 {
+	margin-bottom: 40px;
+}
+
+.margin-top-20 {
+	margin-top: 20px;
+}
+
+.margin-top-25 {
+	margin-top: 25px;
+}
+
+tr > td {
+	vertical-align: middle !important;
+}
 
 /* Body */
 body{
-	padding-top: 140px;
+	padding-top: 100px;
 	padding-bottom: 100px;
 	background-image: url('/assets/fondomod2.jpg');
 	background-position: center;
@@ -9,6 +49,22 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 
+}
+
+.help {
+  background-color: #ffed5e;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 50%;
+  margin-top: 4px;
+  border-color: #bdbdbd;
+  border-width: 1px;
+}
+
+.help-container {
+  text-align: right;
+  margin-top: -41px;
+  margin-right: 3px;
 }
 
 /* Cabecera. Color brand */
@@ -23,8 +79,8 @@ body{
 
 /* Panel */
 .panel {
-	margin-left: 350px;
 	max-width: 700px;
+	margin: auto;
 }
 
 /* Dentro del panel */
@@ -37,7 +93,7 @@ body{
 	display: block;
 	height: 600px;
 	width: 100%;
-	margin-bottom: 50px;
+	//margin-bottom: 50px;
 	// margin-left: 50px;
 }
 

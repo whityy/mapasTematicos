@@ -6,28 +6,26 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :static_pages do
-    collection do
-      post :import
-    end
+ 	authenticated :user do
+    root 'maps#index', as: :authenticated_root
   end
 
-  get 'static_pages/maps'
-  post 'static_pages/maps'
+  root to: 'static_pages#home'
 
-  root to: 'static_pages#maps'
+	get 'report' => 'maps#report', defaults: { format: :pdf }
+	post 'report' => 'maps#report', defaults: { format: :pdf }
 
+	get  'maps' 				=>   'maps#index'
+  get  'maps/delete'  =>   'maps#delete'
+  get  'maps/show'    =>   'maps#show'
+  get  'maps/list'	  =>   'maps#list'
+  post 'maps/show'    =>   'maps#show'
+  post 'maps/create'  =>   'maps#save'
 
-  get 'help'    =>      'static_pages#help'
-
-  get 'about'   =>      'static_pages#about'
-
-  get 'contact' =>      'static_pages#contact'
-
-  get 'maps'    =>      'static_pages#maps'
-
-
-  #get '/welcome' => 'static_pages#maps'
+  get 'help'         =>   'static_pages#help'
+  get 'about'        =>   'static_pages#about'
+  get 'contact'      =>   'static_pages#contact'
+	get  'home' 			 =>   'static_pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
